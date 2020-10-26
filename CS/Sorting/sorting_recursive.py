@@ -1,11 +1,26 @@
-def merge(items1, items2):
-    """Merge given lists of items, each assumed to already be in sorted order,
-    and return a new list containing all items in sorted order.
-    TODO: Running time: ??? Why and under what conditions?
-    TODO: Memory usage: ??? Why and under what conditions?"""
-    # TODO: Repeat until one list is empty
-    # TODO: Find minimum item in both lists and append it to new list
-    # TODO: Append remaining items in non-empty list to new list
+from heapq import merge
+
+# def merge(items1, items2):
+#     """Merge given lists of items, each assumed to already be in sorted order,
+#     and return a new list containing all items in sorted order.
+#     TODO: Running time: ??? Why and under what conditions?
+#     TODO: Memory usage: ??? Why and under what conditions?"""
+#     length_1 = len(items1)
+#     length_2 = len(items2)
+
+#     result = []
+#     i, j = 0, 0
+#     while i < length_1 and j < length_2:
+#         if items[i] < items[j]:
+#             result.append(items1[i])
+#             i+= 1
+#         else:
+#             result.append(items_2[j])
+#             j += 1
+#     result = result + items[i:] + items2[j:]
+#     return result
+
+    
 
 
 def split_sort_merge(items):
@@ -50,7 +65,16 @@ def quick_sort(items, low=None, high=None):
     TODO: Best case running time: ??? Why and under what conditions?
     TODO: Worst case running time: ??? Why and under what conditions?
     TODO: Memory usage: ??? Why and under what conditions?"""
-    # TODO: Check if high and low range bounds have default values (not given)
-    # TODO: Check if list or range is so small it's already sorted (base case)
-    # TODO: Partition items in-place around a pivot and get index of pivot
-    # TODO: Sort each sublist range by recursively calling quick sort
+    sequence_length = len(items)
+    if sequence_length <= 1:
+        return items
+    else:
+        pivot = items.pop()
+    high = []
+    low = []
+    for item in items:
+        if item > pivot:
+            high.append(item)
+        else:
+            low.append(item)
+    return quick_sort(low) + [pivot] + quick_sort(high)

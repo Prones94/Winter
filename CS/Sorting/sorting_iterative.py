@@ -54,3 +54,18 @@ def insertion_sort(items):
             items[i], items[i-1] = items[i-1], items[i]
             i -= 1
     return items
+
+def quick_sort(sequence):
+    sequence_length = len(sequence)
+    if sequence_length <= 1:
+        return sequence
+    else:
+        pivot = sequence.pop()
+    items_greater = []
+    items_lower = []
+    for item in sequence:
+        if item > pivot:
+            items_greater.append(item)
+        else:
+            items_lower.append(item)
+    return quick_sort(items_lower) + [pivot] + quick_sort(items_greater)

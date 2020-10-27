@@ -1,4 +1,6 @@
-from heapq import merge
+from heapq import merge 
+from sorting_iterative import *
+import math
 
 # def merge(items1, items2):
 #     """Merge given lists of items, each assumed to already be in sorted order,
@@ -9,14 +11,16 @@ from heapq import merge
 #     length_2 = len(items2)
 
 #     result = []
-#     i, j = 0, 0
-#     while i < length_1 and j < length_2:
-#         if items[i] < items[j]:
-#             result.append(items1[i])
-#             i+= 1
+#     left = right = 0
+#     while left < length_1 and right < length_2:
+#         if items1[left] < items2[right]:
+#             result.append(items1[left])
+#             left+= 1
 #         else:
-#             result.append(items_2[j])
-#             j += 1
+#             result.append(items_2[right])
+#             right += 1
+      #result.extend(items1[left:])
+      #result.extend(items2[right:])
 #     result = result + items[i:] + items2[j:]
 #     return result
 
@@ -29,9 +33,18 @@ def split_sort_merge(items):
     a list in sorted order.
     TODO: Running time: ??? Why and under what conditions?
     TODO: Memory usage: ??? Why and under what conditions?"""
+    items_length = len(items)
+    halfway = math.floor(items_length)/2
     # TODO: Split items list into approximately equal halves
-    # TODO: Sort each half using any other sorting algorithm
-    # TODO: Merge sorted halves into one list in sorted order
+    low = []
+    high = []
+    for  i in range(halfway):
+        low.append(items[i])
+        result_one = insertion_sort(low)
+    for j in range(halfway+1, items_length-1):
+        high.append(items[j])
+        result_two = insertion_sort(high)
+    return merge(result_one,result_two)
 
 
 def merge_sort(items):
@@ -39,10 +52,12 @@ def merge_sort(items):
     sorting each recursively, and merging results into a list in sorted order.
     TODO: Running time: ??? Why and under what conditions?
     TODO: Memory usage: ??? Why and under what conditions?"""
-    # TODO: Check if list is so small it's already sorted (base case)
-    # TODO: Split items list into approximately equal halves
-    # TODO: Sort each half by recursively calling merge sort
-    # TODO: Merge sorted halves into one list in sorted order
+    if len(items) < 1:
+        return items
+    middle = int(len(items) / 2)
+
+    left, right = merge_sort(items[:middle]), merge_sort(items[middle:])
+    return merge(left, right)
 
 
 def partition(items, low, high):
@@ -53,6 +68,15 @@ def partition(items, low, high):
     TODO: Running time: ??? Why and under what conditions?
     TODO: Memory usage: ??? Why and under what conditions?"""
     # TODO: Choose a pivot any way and document your method in docstring above
+    i = low -1
+    pivot = items[high]
+    for j in range(low, high):
+        if items[j] < pivot:
+            i += 1
+            items[i], items[j] = items[j],items[i]
+    items[i+1], items[high] = items[high], items[i+1]
+    return (i+1)
+        
     # TODO: Loop through all items in range [low...high]
     # TODO: Move items less than pivot into front of range [low...p-1]
     # TODO: Move items greater than pivot into back of range [p+1...high]
@@ -65,16 +89,20 @@ def quick_sort(items, low=None, high=None):
     TODO: Best case running time: ??? Why and under what conditions?
     TODO: Worst case running time: ??? Why and under what conditions?
     TODO: Memory usage: ??? Why and under what conditions?"""
-    sequence_length = len(items)
-    if sequence_length <= 1:
-        return items
-    else:
-        pivot = items.pop()
-    high = []
-    low = []
-    for item in items:
-        if item > pivot:
-            high.append(item)
-        else:
-            low.append(item)
-    return quick_sort(low) + [pivot] + quick_sort(high)
+    # sequence_length = len(items)
+    # if sequence_length <= 1:
+    #     return items
+    # else:
+    #     pivot = items.pop()
+    #     high = []
+    #     low = []
+    #     for item in items:
+    #         if item > pivot:
+    #             high.append(item)
+    #         else:
+    #             low.append(item)
+    # return quick_sort(low) + [pivot] + quick_sort(high)
+    if low < high:
+        pivot = partition(items, low, high)
+        quick_sort(items, low, pivot-1)
+        quick_sort(items, pivot+1, high)

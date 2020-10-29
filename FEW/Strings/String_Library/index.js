@@ -36,20 +36,20 @@ String.prototype.capitalizeWords = function() {
 // console.log(result);
 
 const extended = "    hello    world     "
-String.prototype.removeExtraSpaces = function(pattern) {
-    return this.replace(/\s+/g, pattern).trim()
+String.prototype.removeExtraSpaces = function() {
+    return this.replace(/\s+/g, ' ').trim()
 }
 // const result = extended.removeExtraSpaces(' ')
 // console.log(result);
 
-String.prototype.kabobCase = function(pattern) {
-    return this.toLowerCase().removeExtraSpaces().replace(/\s+/g,pattern)
+String.prototype.kabobCase = function() {
+    return this.toLowerCase().removeExtraSpaces().replace(/\s+/g,'-')
 }
 // const result = extended.kabobCase('-')
 // console.log(result);
 
-String.prototype.snakeCase = function(pattern) {
-    return this.toLowerCase().removeExtraSpaces().replace(/\s+/g, pattern)
+String.prototype.snakeCase = function() {
+    return this.toLowerCase().removeExtraSpaces().replace(/\s+/g, '_')
 }
 // const result = extended.snakeCase('_')
 // console.log(result);

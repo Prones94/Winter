@@ -1,0 +1,20 @@
+{
+  "name": "there_be_strings",
+  "version": "1.0.0",
+  "description": "String library for some functions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Prones94"
+  },
+  "keywords": [
+    "javascript",
+    "string",
+    "functions"
+  ],
+  "author": "Ian Rones",
+  "license": "MIT"
+}

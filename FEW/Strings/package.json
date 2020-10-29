@@ -1,0 +1,19 @@
+{
+  "name": "@username/strings",
+  "version": "1.0.0",
+  "description": "String functions to capitalize first character, capitalize all characters, capitalize first word, trim extra whitespaces, replace whitespace with other character, and shift",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Prones94"
+  },
+  "keywords": [
+    "javascript",
+    "strings"
+  ],
+  "author": "Ian Rones",
+  "license": "MIT"
+}

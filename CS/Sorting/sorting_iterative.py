@@ -45,7 +45,7 @@ def selection_sort(items):
 def insertion_sort(items):
     """Sort given items by taking first unsorted item, inserting it in sorted
     order in front of items, and repeating until all items are in order.
-    TODO: Running time: O(n^2)
+    TODO: Running time: Best: O(n) Average:O(n^2) Worst O(n^2)
     TODO: Memory usage: O(1)"""
     item_length = range(1, len(items))
     for i in item_length:

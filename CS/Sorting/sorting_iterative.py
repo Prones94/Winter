@@ -1,7 +1,7 @@
 def is_sorted(items):
     """Return a boolean indicating whether given items are in sorted order.
-    TODO: Running time: ??? Why and under what conditions?
-    TODO: Memory usage: ??? Why and under what conditions?"""
+    TODO: Running time: O(1)
+    TODO: Memory usage: O(1)"""
     # if (all(items[i] < items[i+1] for i in range(len(items)-1))):
     #     return True
     # return False

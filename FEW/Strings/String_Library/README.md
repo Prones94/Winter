@@ -1,4 +1,6 @@
 # String Library
+[![GitHub license](https://img.shields.io/github/license/Prones94/Winter?color=green&logo=Github&style=flat-square)](https://github.com/Prones94/Winter)
+[![GitHub stars](https://img.shields.io/github/stars/Prones94/Winter)](https://github.com/Prones94/Winter/stargazers)
 
 - `capitalize()` 
   Have **first character** of a given string uppercase  

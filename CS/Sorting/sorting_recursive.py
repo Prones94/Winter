@@ -1,11 +1,11 @@
-from heapq import merge 
+from heapq import merge
 from sorting_iterative import *
 import math
 
 # def merge(items1, items2):
 #     """Merge given lists of items, each assumed to already be in sorted order,
 #     and return a new list containing all items in sorted order.
-#     TODO: Running time: ??? Why and under what conditions?
+#     TODO: Running time: O(n) 
 #     TODO: Memory usage: ??? Why and under what conditions?"""
 #     length_1 = len(items1)
 #     length_2 = len(items2)
@@ -24,7 +24,7 @@ import math
 #     result = result + items[i:] + items2[j:]
 #     return result
 
-    
+
 
 
 def split_sort_merge(items):
@@ -50,7 +50,7 @@ def split_sort_merge(items):
 def merge_sort(items):
     """Sort given items by splitting list into two approximately equal halves,
     sorting each recursively, and merging results into a list in sorted order.
-    TODO: Running time: O(n log(n)) 
+    TODO: Running time: O(n log(n))
     TODO: Memory usage: O(n) Why and under what conditions?"""
     if len(items) < 1:
         return items
@@ -76,7 +76,7 @@ def partition(items, low, high):
             items[i], items[j] = items[j],items[i]
     items[i+1], items[high] = items[high], items[i+1]
     return (i+1)
-        
+
     # TODO: Loop through all items in range [low...high]
     # TODO: Move items less than pivot into front of range [low...p-1]
     # TODO: Move items greater than pivot into back of range [p+1...high]

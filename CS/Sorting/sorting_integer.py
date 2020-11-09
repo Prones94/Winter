@@ -1,3 +1,5 @@
+from sorting_iterative import insertion_sort
+
 def counting_sort(numbers):
     """Sort given numbers (integers) by counting occurrences of each number,
     then looping over counts and copying that many numbers into output list.
@@ -16,6 +18,23 @@ def bucket_sort(numbers, num_buckets=10):
     TODO: Running time: ??? Why and under what conditions?
     TODO: Memory usage: ??? Why and under what conditions?"""
     # TODO: Find range of given numbers (minimum and maximum values)
+    arr =  []
+    for i in range(num_buckets):
+        arr.append([])
+
+    for j in numbers:
+        index_b = int(num_buckets * j)
+        arr[index_b].append(j)
+
+    for i in range(num_buckets):
+        arr[i] = insertion_sort(arr[i])
+
+    k = 0
+    for i in range(num_buckets):
+        for j in range(len(arr[i])):
+            numbers[k] = arr[i][j]
+            k += 1
+    return numbers
     # TODO: Create list of buckets to store numbers in subranges of input range
     # TODO: Loop over given numbers and place each item in appropriate bucket
     # TODO: Sort each bucket using any sorting algorithm (recursive or another)

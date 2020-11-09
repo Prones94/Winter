@@ -1,11 +1,11 @@
 from heapq import merge
-from sorting_iterative import *
+from sorting_iterative import insertion_sort
 import math
 
 # def merge(items1, items2):
 #     """Merge given lists of items, each assumed to already be in sorted order,
 #     and return a new list containing all items in sorted order.
-#     TODO: Running time: O(n) 
+#     TODO: Running time: O(n)
 #     TODO: Memory usage: ??? Why and under what conditions?"""
 #     length_1 = len(items1)
 #     length_2 = len(items2)

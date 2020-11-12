@@ -19,8 +19,8 @@ class Date {
             'd': this.day,
             'H': check(this.hour),
             'h': this.hour,
-            'F': check(this.minute),
-            'f': this.minute,
+            'I': check(this.minute),
+            'i': this.minute,
             'S': check(this.second),
             's': this.second
         }
@@ -46,7 +46,23 @@ class Date {
     //Second
     get second() { return this.date.getSeconds() }
 
-    
+    format(isString=''){
+        if (!isString === '') {
+            return `${this.year} ${full_months[this.month]} ${this.day}`
+        } else {
+            let i, string_length = isString.length;
+            let time = "";
+            for(i=0; i < string_length;i++){
+                if(isString[i] in this.dVars){
+                    time += this.dVars[isString[i]]
+                } else {
+                    time += isString[i]
+                }
+            }
+            return time
+        }
+    }
+
 
 
 }

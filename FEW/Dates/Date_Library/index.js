@@ -47,7 +47,7 @@ class Date {
     get second() { return this.date.getSeconds() }
 
     format(isString=''){
-        if (!isString === '') {
+        if (isString === '') {
             return `${this.year} ${full_months[this.month]} ${this.day}`
         } else {
             let i, string_length = isString.length;
@@ -63,6 +63,29 @@ class Date {
         }
     }
 
-
+    when() {
+        const today = new Date()
+        let time_diff = today.getTime() - this.date.getTime()
+        if (time_diff === 0){
+            return "today"
+        }
+        //Millisecond calculcations
+        time_diff /= 1000
+        if (Math.abs(time_diff) < 60) {
+            return `${time_diff.toFixed(0)} second ${time_diff.toFixed(0) > 1 ?  's' : '' }` + (time_diff < 0 ? ' from now' : 'ago')
+        }
+        //Seconds calculations
+        time_diff /= 60
+        if (Math.abs(time_diff) < 60) {
+            return `${time_diff.toFixed(0)} minutes ${time}`
+        }
+        time_diff /= 24
+        if(Math.abs(time_diff) < 12){
+            return `${time_diff.toFixed(0)}month${time_diff.toFixed(0) > 1 ? 's' : ''}` + (time_diff < 0 ? ` from now` : ` ago`)
+        }
+        time_diff /= 12
+        return `${time_diff.toFixed(0)} years ${time_diff.toFixed(0) > 0 ? ` from now` : ` ago`}`
+    }
 
 }
+

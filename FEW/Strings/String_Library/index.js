@@ -1,13 +1,13 @@
 // Challenge 1 capitalize() - makes the first character of a given string uppercase
 // Challenge 2 allCaps() - makes all characters uppercase
 // Challenge 3 capitalizeWords() - makes the first character of each upperCase
-// Challenge 4 removeExtraSpaces() - Removes all spaces from the beginning and end of String along with any extra spaces in the 
+// Challenge 4 removeExtraSpaces() - Removes all spaces from the beginning and end of String along with any extra spaces in the
 // middle. If more than one space appears in the middle of a string it is replaced by a single space
 // Challenge 5 kabobCase() - Removes extra spaces and replaces spaces with the hyphen "-", and makes all characters lowercase
 // Challenge 6 snakeCase() - Removes extra space and replaces spaces with an underscore "_", and makes all characters lowercase
-// Challenge 7 camelCase() - Lowercases the first character of the first word. Then uppercases the first character of all other 
-// words, and removes the spaces 
-// Challenge 8 shit() - This method will take the first character of a string and move to the end of a string 
+// Challenge 7 camelCase() - Lowercases the first character of the first word. Then uppercases the first character of all other
+// words, and removes the spaces
+// Challenge 8 shit() - This method will take the first character of a string and move to the end of a string
 
 const string = "hello world"
 String.prototype.capitalize = function() {

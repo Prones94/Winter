@@ -35,15 +35,34 @@ class PrefixTree:
 
     def is_empty(self):
         """Return True if this prefix tree is empty (contains no strings)."""
-        # TODO
+        return self.size == 0
 
     def contains(self, string):
         """Return True if this prefix tree contains the given string."""
-        # TODO
+        node = self.root
+        for char in string:
+            if node.has_child(char): # Traverse through node if it has a child
+                child = node.get_child(char)
+                node = child
+            else: # check if node is terminal
+                return node.is_terminal()
+        return node.is_terminal() # final node should be terminal
 
     def insert(self, string):
         """Insert the given string into this prefix tree."""
-        # TODO
+        node = self.root
+        for char in string:
+            if node.has_child(char): # Search for child
+                node = node.get_child(char) # Node is there, move to the next node
+            else:
+                # Create a new node
+                new_node = PrefixTreeNode(char)
+                node.add_child(char, new_node)
+                node = new_node
+        # if node is not terminal, increase word count, then set terminal to equal True
+        if not node.is_terminal():
+            self.size += 1
+            node.terminal = True
 
     def _find_node(self, string):
         """Return a pair containing the deepest node in this prefix tree that
@@ -55,26 +74,43 @@ class PrefixTree:
             return self.root, 0
         # Start with the root node
         node = self.root
-        # TODO
+        idx_pointer = 0 # Create starting pointer
+        # Loop through each letter of string
+        while idx_pointer < len(string) and node.has_child(string[idx_pointer]) is True:
+            # Traverse through each node, point to the next value
+            node = node.get_child(string[idx_pointer])
+            idx_pointer += 1
+        # return both node and location of the node
+        return node,idx_pointer
 
     def complete(self, prefix):
         """Return a list of all strings stored in this prefix tree that start
         with the given prefix string."""
         # Create a list of completions in prefix tree
         completions = []
-        # TODO
+        if prefix == '':
+            return self.strings()
+        node = self._find_node(prefix)
+        if node[0].character != '':
+            self._traverse(node[0], prefix, completions.append)
+        return completions
 
     def strings(self):
         """Return a list of all strings stored in this prefix tree."""
         # Create a list of all strings in prefix tree
         all_strings = []
-        # TODO
+        self._traverse(self.root, '',all_strings.append)
+        return all_strings
 
     def _traverse(self, node, prefix, visit):
         """Traverse this prefix tree with recursive depth-first traversal.
         Start at the given node with the given prefix representing its path in
         this prefix tree and visit each node with the given visit function."""
-        # TODO
+        if node.is_terminal():
+            visit(prefix)
+        for char in node.children.keys():
+            child = node.get_child(char)
+            self._traverse(child, prefix + char, visit)
 
 
 def create_prefix_tree(strings):

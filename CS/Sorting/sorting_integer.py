@@ -36,25 +36,26 @@ def bucket_sort(numbers, num_buckets=10):
     Worst: O(n^2), There would be the same number of full buckets ast ehre are items in the original array, or else the array balues are so unevenly distributed that the sorting and arranging of the sub-arrays in the buckets takes more time
     Memory usage:O(n) memory usage will be linear as the algorithm only needs to create one extra data structure. Python uses dynamic arrays which allow for more flexibility"""
     arr =  []
-    
+
     # Create empty buckets
     for i in range(num_buckets):
         arr.append([])
 
     # isnert each elements from numbers into each bucket
-    for j in numbers:
-        index_b = int(num_buckets * j)
-        arr[index_b].append(j)
+    for num in numbers:
+        index = int(num/max(numbers)* (num_buckets - 1))
+        bucket = arr[index]
+        bucket.append(num)
 
     # Then sort each element using insertion sort
-    for i in range(num_buckets):
-        arr[i] = insertion_sort(arr[i])
+    for bucket in arr:
+        insertion_sort(bucket)
 
     # get sorted elements
     k = 0
     for i in range(num_buckets):
-        for j in range(len(arr[i])):
-            numbers[k] = arr[i][j]
+        for value in arr[i]:
+            numbers[k] = value
             k += 1
 
     # return sorted numbers array

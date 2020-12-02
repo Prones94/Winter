@@ -24,7 +24,7 @@ class IsSortedTest(unittest.TestCase):
         assert is_sorted([7, 5, 3]) is False
         assert is_sorted([10, 1, 3]) is False
         assert is_sorted([4, 8, 3]) is False
-        
+
 
     def test_is_sorted_on_sorted_strings(self):
         # Positive test cases (examples) with lists of sorted strings
@@ -33,7 +33,7 @@ class IsSortedTest(unittest.TestCase):
         assert is_sorted(['A', 'B']) is True
         assert is_sorted(['A', 'B', 'B']) is True
         assert is_sorted(['A', 'B', 'B','C','C']) is True
-        
+
 
     def test_is_sorted_on_unsorted_strings(self):
         # Negative test cases (counterexamples) with lists of unsorted strings
@@ -42,7 +42,7 @@ class IsSortedTest(unittest.TestCase):
         assert is_sorted(['C', 'B', 'A']) is False
         assert is_sorted(['D', 'A', 'A']) is False
         assert is_sorted(['I', 'I', 'C', 'C']) is False
-        
+
 
     def test_is_sorted_on_sorted_tuples(self):
         # Positive test cases (examples) with lists of sorted tuples
@@ -60,7 +60,7 @@ class IsSortedTest(unittest.TestCase):
         assert is_sorted([(3, 'A'), (5, 'B')]) is True  # Both items sorted
         assert is_sorted([(3, 'A'), (5, 'A')]) is True  # First item sorted
         assert is_sorted([(3, 'A'), (3, 'B')]) is True  # Second item sorted
-        
+
 
     def test_is_sorted_on_unsorted_tuples(self):
         # Negative test cases (counterexamples) with lists of unsorted tuples
@@ -70,7 +70,7 @@ class IsSortedTest(unittest.TestCase):
         assert is_sorted([('B', 5), ('A', 3)]) is False  # Both items unsorted
         assert is_sorted([('B', 3), ('A', 5)]) is False  # First item unsorted
         assert is_sorted([('A', 5), ('A', 3)]) is False  # Second item unsorted
-        
+
 
 
 class IntegerSortTest(unittest.TestCase):
@@ -103,7 +103,7 @@ class IntegerSortTest(unittest.TestCase):
         assert items3 == [3, 3, 5, 5, 5]
         items4 = [7, 5, 3, 7, 5, 7, 5, 3, 7]
         sort(items4)
-        
+
 
     def test_sort_on_lists_of_random_integers(self):
         # Generate list of 10 random integers from range [1...20]

@@ -19,8 +19,8 @@ def merge(items1, items2):
         else:
             result.append(items_2[right])
             right += 1
-      result.extend(items1[left:])
-      result.extend(items2[right:])
+    result.extend(items1[left:])
+    result.extend(items2[right:])
     result = result + items[left:] + items2[right:]
     return result
 

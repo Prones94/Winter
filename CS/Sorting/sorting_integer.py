@@ -43,7 +43,7 @@ def bucket_sort(numbers, num_buckets=10):
 
     # isnert each elements from numbers into each bucket
     for num in numbers:
-        index = int(num/max(numbers)* (num_buckets - 1))
+        index = int(num/max(numbers)* (num_buckets + 1))
         bucket = arr[index]
         bucket.append(num)
 

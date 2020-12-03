@@ -1,8 +1,8 @@
 const string_test = require('../index')
 
 
-test('capsFirstLtr', () => {
-    expect(string_test.capsFirstLtr('whats up')).toBe('Whats up')
+test('capitalize', () => {
+    expect(string_test.capitalize('whats up')).toBe('Whats up')
 
 })
 
@@ -22,7 +22,7 @@ test('removeExtraSpaces', () => {
 
 })
 
-test('kebabCase', () => {
+test('kebobCase', () => {
     expect(string_test.kebabCase('  why are  there   so many  spaces     in  this sentence    ?')).toBe('why-are-there-so-many-spaces-in-this-sentence')
 })
 

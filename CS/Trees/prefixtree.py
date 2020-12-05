@@ -2,7 +2,6 @@
 
 from prefixtreenode import PrefixTreeNode
 
-
 class PrefixTree:
     """PrefixTree: A multi-way prefix tree that stores strings with efficient
     methods to insert a string into the tree, check if it contains a matching
@@ -40,11 +39,11 @@ class PrefixTree:
     def contains(self, string):
         """Return True if this prefix tree contains the given string."""
         node = self.root
-        for char in string:
-            if node.has_child(char): # Traverse through node if it has a child
-                child = node.get_child(char)
-                node = child
-            else: # check if node is terminal
+        for char in string: # traverse through the string of each character
+            if node.has_child(char): # if node has the character
+                child = node.get_child(char) # this will be our "next"
+                node = child # This will reassign "head"
+            else: # the character is not in the string
                 return node.is_terminal()
         return node.is_terminal() # final node should be terminal
 
@@ -52,13 +51,13 @@ class PrefixTree:
         """Insert the given string into this prefix tree."""
         node = self.root
         for char in string:
-            if node.has_child(char): # Search for child
+            if node.has_child(char): # Search for child, and character is found
                 node = node.get_child(char) # Node is there, move to the next node
             else:
                 # Create a new node
                 new_node = PrefixTreeNode(char)
-                node.add_child(char, new_node)
-                node = new_node
+                node.add_child(char, new_node) # Append new node
+                node = new_node # point "head" to new new node and continue
         # if node is not terminal, increase word count, then set terminal to equal True
         if not node.is_terminal():
             self.size += 1
@@ -76,8 +75,9 @@ class PrefixTree:
         node = self.root
         idx_pointer = 0 # Create starting pointer
         # Loop through each letter of string
+        # while the runner is less than the length of the string and the if the node has the character
         while idx_pointer < len(string) and node.has_child(string[idx_pointer]) is True:
-            # Traverse through each node, point to the next value
+            # Traverse through each node, then point to the next value
             node = node.get_child(string[idx_pointer])
             idx_pointer += 1
         # return both node and location of the node
@@ -87,18 +87,27 @@ class PrefixTree:
         """Return a list of all strings stored in this prefix tree that start
         with the given prefix string."""
         # Create a list of completions in prefix tree
+        # Create an empty array to hold all strings
         completions = []
+        # If prefix is equal to nothing
         if prefix == '':
+            # Return null
             return self.strings()
+        # use the _find function to find the prefix within the string
         node = self._find_node(prefix)
+        # if the value at the start is not equal to nothing
         if node[0].character != '':
+            # start the recursive traverse function, start from the first value in the node, with the prefix used; and then on each visit, append to the completions array
             self._traverse(node[0], prefix, completions.append)
+        # return the filled list of strings
         return completions
 
     def strings(self):
         """Return a list of all strings stored in this prefix tree."""
         # Create a list of all strings in prefix tree
+        # Create an empty array
         all_strings = []
+        # use the recursive traverse function, start from the self.root, start from an empty prefix, and on each node visited, append to the empty array
         self._traverse(self.root, '',all_strings.append)
         return all_strings
 
@@ -106,10 +115,15 @@ class PrefixTree:
         """Traverse this prefix tree with recursive depth-first traversal.
         Start at the given node with the given prefix representing its path in
         this prefix tree and visit each node with the given visit function."""
+        # BASE CASE
+        # If this node is the end, return the entire prefix string
         if node.is_terminal():
             visit(prefix)
+        # Traverse through the keys of the node's children
         for char in node.children.keys():
+            # Assign the char to child
             child = node.get_child(char)
+            # Recursively call the traversal function, but continue to add the new character to the prefix and start from the child node until we reach the end
             self._traverse(child, prefix + char, visit)
 
 

@@ -2,38 +2,41 @@ const string_test = require('../index')
 
 
 test('capitalize', () => {
-    expect(string_test.capitalize('whats up')).toBe('Whats up')
+    expect(('whats up').capitalize()).toBe('Whats up')
 
 })
 
 
 test('allCaps', () => {
-    expect(string_test.allCaps('whats up')).toBe('WHATS UP')
+    expect(('whats up').allCaps()).toBe('WHATS UP')
 
 })
 
+let testString1 = 'now this is going to capitalize all words in the sentence'
 test('capitalizeWords', () => {
-    expect(string_test.capitalizeWords('now this is going to capitalize all words in the sentence')).toBe('Now This Is Going To Capitalize All Words In The Sentence')
+    expect(testString1.capitalizeWords()).toBe('Now This Is Going To Capitalize All Words In The Sentence ')
 
 })
 
+let stringTest2 = '  why are  there   so many  spaces     in  this sentence'
 test('removeExtraSpaces', () => {
-    expect(string_test.removeExtraSpaces('  why are  there   so many  spaces     in  this sentence?')).toBe('why are there so many spaces in this sentence?')
+    expect(stringTest2.removeExtraSpaces()).toBe('why are there so many spaces in this sentence')
 
 })
 
-test('kebobCase', () => {
-    expect(string_test.kebabCase('  why are  there   so many  spaces     in  this sentence    ?')).toBe('why-are-there-so-many-spaces-in-this-sentence')
+test('kabobCase', () => {
+    expect(stringTest2.kabobCase()).toBe('why-are-there-so-many-spaces-in-this-sentence')
 })
 
 test('snakeCase', () => {
-    expect(string_test.snakeCase('  why are  there   so many  spaces     in  this sentence    ?')).toBe('why_are_there_so_many_spaces_in_this_sentence')
+    expect(stringTest2.snakeCase()).toBe('why_are_there_so_many_spaces_in_this_sentence')
 })
 
 test('camelCase', () => {
-    expect(string_test.camelCase('  why are  there   so many  spaces     in  this sentence    ?')).toBe('whyArethereSoManyspacesInthisSentence?')
+    expect(stringTest2.camelCase()).toBe('whyArethereSoManyspacesInthisSentence')
 })
 
+let shiftTest = 'it really is a beautiful day today'
 test('shift', () => {
-    expect(string_test.shift('it really is a beautiful day today')).toBe('ti eallyr si a eautifulb ayd odayt')
+    expect(shiftTest.shift()).toBe('ti eallyr si a eautifulb ayd odayt')
 })

@@ -1,6 +1,6 @@
 {
   "name": "there_be_strings",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "String library for some functions",
   "main": "index.js",
   "scripts": {

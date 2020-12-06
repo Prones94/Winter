@@ -58,15 +58,15 @@ String.prototype.camelCase = function() {
     let string, string_length,result, i;
     string = this.split(' ')
     result = ''
-    for(word of string){
-        result += word.capitalize()
-    }
-    result = result[0].toLowerCase() + result.slice(1);
-    return result
-    // string = this.toLowerCase().replace(/(>:(^.)|([-_\s]+.))/g, function(match){
-    //     return match.charAt(match.length-1).toUpperCase();
-    // });
-    // return string.charAt(0).toLowerCase() + string.substring(1)
+    // for(word of string){
+    //     result += word.capitalize()
+    // }
+    // result = result[0].toLowerCase() + result.slice(1);
+    // return result
+    string = this.toLowerCase().replace(/(>:(^.)|([-_\s]+.))/g, function(match){
+        return match.charAt(match.length-1).toUpperCase();
+    });
+    return string.charAt(0).toLowerCase() + string.substring(1)
 }
 // result = string.camelCase()
 // console.log(result);
